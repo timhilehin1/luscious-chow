@@ -13,7 +13,8 @@ const Navbar = () => {
   };
 
   return (
-    <header className="px-5 md:px-7 md:py-4 bg-customBlack items-center sticky top-0 z-[100] h-[65px] md:h-auto">
+    <header className={`px-5 md:px-7 md:py-4 ${isOpen ? 'bg-customBlack/90 md:bg-customBlack' : 'bg-customBlack'}
+     bg-customBlack items-center sticky top-0 z-[100] h-[65px] md:h-auto`}>
       <div className="flex items-center h-full">
         <Link
           href="/"
@@ -25,7 +26,7 @@ const Navbar = () => {
         <section
           className={`grow items-center absolute top-[100%] flex md:static flex-col md:flex-row ease-in-out duration-200  
 md:h-auto ${isOpen ? 'h-[calc(100vh-65px)]' : 'h-0'} gap-6 md:gap-0 overflow-hidden
- bg-customBlack w-full left-0 `}
+ bg-customBlack/90 w-full left-0 `}
         >
           <div className="flex flex-col text-sm md:ml-7 text-center mt-5 md:mt-0 md:text-start">
             <p className="text-white/70">Mon - Sun</p>

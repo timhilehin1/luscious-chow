@@ -12,9 +12,9 @@ const Hero = () => {
         <h1 className='text-3xl md:text-5xl lora-heading md:leading-[3.5rem]'>We sell HAPPINESS<br /> not just FOOD.
         <br />Irresistibly tasty! 😋</h1>
         <p className='text-customGray mb-6 md:text-lg'>Your favourite food plug in Lagos, Nigeria </p>
-        <div className='flex gap-5 tracking-wide capitalize ease-in-out duration-100'>
-            <button className='px-4 py-3 bg-white text-black shadow-lg shadow-white/0 hover:shadow-white'>Order Now</button>
-            <button className='border px-4 py-3 border-white hover:bg-white/20'>See our Menu</button>
+        <div className='flex flex-wrap gap-5 tracking-wide capitalize'>
+            <button className='px-5 py-3 bg-white text-black shadow-lg shadow-white/0 ease-in-out duration-150 hover:shadow-white'>Order Now</button>
+            <button className='border px-5 py-3 border-white hover:bg-white/10 ease-in-out duration-150'>See our Menu</button>
         </div>
         </article>
        
