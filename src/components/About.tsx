@@ -8,7 +8,7 @@ const About = () => {
         About Us
       </h3>
       <section className="grid grid-cols-1 gap-5 md:gap-0 md:grid-cols-2 my-10">
-        <div className="relative h-[150px] md:min-h-[400px]">
+        <div className="relative h-[15rem] md:h-auto">
           <img src="/assets/images/1.jpg" className="absolute h-full w-full object-cover " alt="" />
         </div>
         <div className="md:p-14 flex items-center">

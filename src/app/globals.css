@@ -31,9 +31,14 @@ body{
   font-style: normal;
 }
 
-@media(min-width:640px) and (max-width:1023px){
+
+@media(min-width:767px) and (max-width:1023px){
   html{
     font-size: 16px;
+  }
+  .vertical-text{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
   }
 }
 
@@ -41,4 +46,10 @@ body{
   html{
     font-size: 17px;
   }
+
+  .vertical-text{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+  
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
+import FadeInComponent from "./Animation/FadeInComponent";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -14,8 +15,9 @@ const Navbar = () => {
 
   return (
     <header className={`px-5 md:px-7 md:py-4 ${isOpen ? 'bg-customBlack/90 md:bg-customBlack' : 'bg-customBlack'}
-     bg-customBlack items-center sticky top-0 z-[100] h-[65px] md:h-auto`}>
-      <div className="flex items-center h-full">
+     bg-customBlack items-center sticky top-0 z-[100] `}>
+      <FadeInComponent direction="top">
+      <div className="flex items-center h-[65px] md:h-auto">
         <Link
           href="/"
           className="tracking-wider lora-heading capitalize text-3xl md:text-4xl"
@@ -97,6 +99,8 @@ md:h-auto ${isOpen ? 'h-[calc(100vh-65px)]' : 'h-0'} gap-6 md:gap-0 overflow-hid
           ></span>
         </button>
       </div>
+      </FadeInComponent>
+    
     </header>
   );
 };
