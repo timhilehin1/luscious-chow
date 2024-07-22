@@ -17,7 +17,7 @@ const Navbar = () => {
 			className={`px-5 md:px-7 md:py-4 ${
 				isOpen ? "bg-customBlack/90 md:bg-customBlack" : "bg-customBlack"
 			}
-     bg-customBlack items-center sticky top-0 z-[100] h-[65px] md:h-auto`}
+     bg-customBlack items-center sticky top-0 z-[100] h-[65px] md:h-[80px]`}
 		>
 			<div className="flex items-center h-full">
 				<Link

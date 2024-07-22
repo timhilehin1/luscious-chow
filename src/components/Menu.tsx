@@ -5,6 +5,7 @@ import Image from "next/image";
 import demoImage from "../../public/assets/images/1.jpg";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { DiTravis } from "react-icons/di";
 
 function Menu() {
 	const [currentSection, setCurrentSection] = useState<string>("#bread");
@@ -14,12 +15,19 @@ function Menu() {
 	}, [params]);
 
 	return (
-		<main className="mt-6 mb-10 flex  sticky top-0  gap-8 lg:gap-6">
-			<section className="w-[60%]   border border-green-700">
-				<div className="bg-pink-500 h-[100px] sticky   top-0">1</div>
+		<main className="mt-6 mb-10 flex    gap-8 lg:gap-6 relative">
+			<section className="w-[60%] h-[calc(100vh-85px)] sticky top-[85px]">
+				<div className="relative w-full h-full">
+                <div className="absolute h-full w-full  bg-gradient-to-b from-white/0 to-customBlack/90 z-10"/>
+					<Image
+						src={demoImage}
+						className="w-full absolute h-full object-cover"
+						alt="cake image"
+					/>
+				</div>
 			</section>
 			<section className="">
-				<div className="h-[1000px]">12</div>
+				<div className="h-[3000px]">12</div>
 			</section>
 		</main>
 	);
