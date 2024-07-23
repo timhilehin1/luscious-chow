@@ -15,13 +15,13 @@ const Navbar = () => {
 
 	return (
 		<header
-			className={`px-5 md:px-7 md:py-4 ${
+			className={`px-5 md:px-7 md:py-1 ${
 				isOpen ? "bg-customBlack/90 md:bg-customBlack" : "bg-customBlack"
 			}
-     bg-customBlack items-center sticky top-0 z-[100] `}
+     bg-customBlack items-center sticky top-0 z-[100]`}
 		>
 			<FadeInComponent direction="top">
-				<div className="flex items-center h-[65px] md:h-[80px]">
+				<div className="flex items-center h-[65px]">
 					<Link
 						href="/"
 						className="tracking-wider lora-heading capitalize text-3xl md:text-4xl"
