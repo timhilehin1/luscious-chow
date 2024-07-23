@@ -1,13 +1,18 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
 import FadeInComponent from "./Animation/FadeInComponent";
+import Image from "next/image";
 
 const Navbar = () => {
 	const pathname = usePathname();
 	const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(()=>{
+    setIsOpen(false)
+  }, [pathname])
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
@@ -24,9 +29,14 @@ const Navbar = () => {
 				<div className="flex items-center h-[65px]">
 					<Link
 						href="/"
-						className="tracking-wider lora-heading capitalize text-3xl md:text-4xl"
+						className="tracking-wider lora-heading capitalize text-3xl md:text-4xl h-[90%] md:h-full w-[90px] relative"
 					>
-						CHOW
+						<Image
+            src={'/assets/images/logo.png'}
+            className="absolute w-full h-full object-contain"
+            fill
+            alt="cake image"
+          />
 					</Link>
 
 					<section
