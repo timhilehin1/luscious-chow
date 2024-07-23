@@ -63,10 +63,10 @@ function Menu() {
 
                       <Image
 						src={currentImage}
-						className="w-full absolute h-full object-cover"
+						className="object-cover"
+                        fill
 						alt="cake image"
-                        width={659}
-                        height={594}
+                       
 					/>
 					<p className="capitalize absolute bottom-16 translate-x-1/2  text-white z-20  text-5xl lora-heading">
 						{currentSection.substring(1)}
