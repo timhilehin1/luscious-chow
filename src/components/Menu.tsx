@@ -107,7 +107,7 @@ function Menu() {
 										<p className="text-xl whitespace-nowrap   lora-heading">
 											{prod.product}
 										</p>
-										<div className="border border-b border-white/70  w-full " />
+										<div className="border self-end border-b border-white/10  w-full " />
 										<p className="lora-heading">${prod.price}</p>
 									</header>
 									<main>{prod.description}</main>
