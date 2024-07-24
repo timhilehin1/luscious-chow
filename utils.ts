@@ -140,7 +140,7 @@ export const dummyProducts = [
 	},
 
 	{
-		category: "food",
+		category: "rice",
 		categoryImage: "/assets/images/food.png",
 		items: [
 			{

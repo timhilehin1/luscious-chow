@@ -2,9 +2,9 @@ import { createClient, type ClientConfig } from "@sanity/client";
 
 const config: ClientConfig = {
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET, // or the name you chose in step 1
+	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
 	useCdn: false, // set to `false` to bypass the edge cache
-	apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION, // use current date (YYYY-MM-DD) to target the 
 	ignoreBrowserTokenWarning: true,
 };
 const client = createClient(config);
