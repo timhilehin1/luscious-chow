@@ -73,8 +73,8 @@ const OrderMeal: React.FC<OrderProps> = ({ data, featured }) => {
             effect="fade"
             className="h-full w-full"
           >
-            {featured.map((item) => (
-              <SwiperSlide className="w-full h-full relative">
+            {featured.map((item, index) => (
+              <SwiperSlide key={index} className="w-full h-full relative">
                 <Image
                   src={item.productImageUrl}
                   fill

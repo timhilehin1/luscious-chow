@@ -177,8 +177,11 @@ function Menu({
 														{product.variations ? (
 															<div className="text-white/70 flex-col gap-1">
 																{product.variations.map(
-																	(variation: variationData) => (
-																		<div className="flex items-center gap-4 text-base">
+																	(variation: variationData, index: number) => (
+																		<div
+																			key={index}
+																			className="flex items-center gap-4 text-base"
+																		>
 																			<p className="capitalize">
 																				{variation.type.toLowerCase()}
 																			</p>{" "}
