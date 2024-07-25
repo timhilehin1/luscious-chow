@@ -148,7 +148,7 @@ function Menu({
 													key={productIndex}
 													className="w-full flex flex-col md:flex-row p-5 gap-4 md:gap-24 lg:gap-0 rounded hover:bg-customGray/5 cursor-pointer ease-in-out duration-100 group"
 												>
-													<div className="md:w-0 w-full h-0 group-hover:h-[200px]  relative group-hover:w-full md:max-w-[180px] group-hover:md:min-h-[130px] group-hover:md:h-auto duration-[600ms] ease-in-out max-h-[450px] shrink-0">
+													<div className="lg:w-0 w-full h-[200px] lg:h-0 group-hover:h-[200px]  relative group-hover:w-full md:max-w-[180px] group-hover:md:min-h-[130px] group-hover:md:h-auto duration-[600ms] ease-in-out max-h-[450px] shrink-0">
 														<Image
 															src={product.productImage.url}
 															className="object-cover rounded"
@@ -159,7 +159,7 @@ function Menu({
 
 													<div className="flex flex-col grow lg:pl-5">
 														<header className="flex gap-2 items-center">
-															<p className="text-base lora-heading">
+															<p className="text-lg capitalize lora-heading">
 																{product.productName}
 															</p>
 															{/* show if there are no variations */}
@@ -175,14 +175,17 @@ function Menu({
 															)}
 														</header>
 														{product.variations ? (
-															<div className="text-white/70 flex-col gap-1">
+															<div className="text-white/70 flex flex-col gap-3">
 																{product.variations.map(
-																	(variation: variationData) => (
-																		<div className="flex items-center gap-4 text-base">
+																	(variation: variationData, index) => (
+																		<div
+																			key={index}
+																			className="flex items-center gap-4 text-base"
+																		>
 																			<p className="capitalize">
 																				{variation.type.toLowerCase()}
 																			</p>{" "}
-																			-{" "}
+																			<span className="border self-center border-b border-white/10 grow"></span>
 																			<p>
 																				{getNairaFormat(
 																					variation.price?.toString()

@@ -17,7 +17,7 @@ const About:React.FC<AboutProps> = ({data}) => {
       </h3>
       <section className="grid grid-cols-1 gap-5 md:gap-0 md:grid-cols-[40%,1fr] my-10 min-h-[15rem]">
         <div className="relative h-[15rem] md:h-full">
-        <Image src={data.businessLogo} alt="" fill className="object-contain "/>
+        <Image src={data.businessLogo} alt="Food in Lagos logo" fill className="object-contain "/>
         </div>
         <div className="md:p-14 flex items-center">         
           <p className="tracking-wide text-customGray leading-relaxed">

@@ -17,7 +17,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ data }) => {
 	const pathname = usePathname();
 	const params = useParams();
-	console.log(pathname);
+	// console.log(pathname);
 	const [isOpen, setIsOpen] = useState(false);
 	//   console.log(data);
 	const [currentSection, setCurrentSection] = useState<string>("");

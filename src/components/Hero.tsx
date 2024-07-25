@@ -21,7 +21,7 @@ const Hero:React.FC<HeroProps> = ({data}) => {
 			<Image
 				src="/assets/images/luscious_chow_hero.jfif"
 				className="h-full w-full object-cover"
-				alt=""
+				alt="Food in lagos"
 				fill
 			/>
 			<div className="bg-gradient-to-r from-customBlack/90 to-white/0  relative z-20 h-full">
