@@ -49,6 +49,7 @@ const FoodCategories = ({ data }: { data: ProductCategoryData[] }) => {
 			<div className="flex flex-col md:flex-row gap-5 h-[700px] md:h-[23rem] w-full my-10">
 				{data.map((item, index) => (
 					<article
+          key={index}
 						className={`relative cursor-pointer overflow-hidden ${
 							active === index ? "flex-[5]" : "flex-1"
 						} ease-in-out duration-150`}

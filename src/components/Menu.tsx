@@ -177,7 +177,7 @@ function Menu({
 														{product.variations ? (
 															<div className="text-white/70 flex flex-col gap-3">
 																{product.variations.map(
-																	(variation: variationData, index) => (
+																	(variation: variationData, index: number) => (
 																		<div
 																			key={index}
 																			className="flex items-center gap-4 text-base"

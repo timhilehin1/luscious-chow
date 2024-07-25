@@ -32,8 +32,8 @@ const Featured:React.FC<FeaturedProps> = ({data}) => {
 				Featured Dishes
 			</h3>
 			<div className="grid grid-cols-1 gap-8 md:grid-cols-3 my-10">
-				{data.map((item) => (
-					<article className="relative h-48 md:h-auto md:aspect-square flex items-end hover:scale-[1.1] ease-in-out duration-150">
+				{data.map((item, index) => (
+					<article key={index} className="relative h-48 md:h-auto md:aspect-square flex items-end hover:scale-[1.1] ease-in-out duration-150">
 						<Image
 							src={item.productImageUrl}
 							className="h-full w-full object-cover"
