@@ -140,7 +140,7 @@ export const dummyProducts = [
 	},
 
 	{
-		category: "food",
+		category: "rice",
 		categoryImage: "/assets/images/food.png",
 		items: [
 			{
@@ -202,3 +202,17 @@ export const dummyProducts = [
 		],
 	},
 ];
+export const NairaFormat = new Intl.NumberFormat("en-NG", {
+	maximumFractionDigits: 0,
+	currency: "NGN",
+	style: "currency",
+});
+
+export const getNairaFormat = (amount: any) => {
+	if (amount) {
+		amount = amount.replaceAll("₦", "");
+		amount = amount.replaceAll(",", "");
+		return NairaFormat.format(amount);
+	}
+	return NairaFormat.format(0);
+};

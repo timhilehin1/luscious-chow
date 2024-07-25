@@ -22,7 +22,7 @@ interface OrderProps {
 
 const OrderMeal: React.FC<OrderProps> = ({ data, featured }) => {
   return (
-    <Container>
+    <Container id='contact'>
       <h3 className="lora-heading capitalize text-2xl sm:text-4xl tracking-wider text-center">
         Order Now!
       </h3>

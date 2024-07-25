@@ -1,27 +1,47 @@
 import client from "./sanity.client";
-import { groq } from "next-sanity";
 
-const query = groq`*[_type == "product"]{
-...
-}`;
-
-export async function getAllProducts() {
+export async function getCategories() {
 	try {
-		const res = await client.fetch(query);
-		// console.log(res);
+		const res =
+			await client.fetch(`*[_type == 'category']{categoryName,'categoryImage': categoryImage{
+              'url': asset->url,
+              alt}}`);
 		return res;
 	} catch (err) {
 		return [];
 	}
 }
 
+// export async function getAllCategory() {
+// 	try {
+// 		const res = await client.fetch(`*[_type == "category"]{
+//             ...,
+//             "categoryImage":categoryImage.asset->url,
+//             }`);
+// 		return res;
+// 	} catch (err) {
+// 		return [];
+// 	}
+// }
 
-export async function getAllCategory() {
+export async function getProducts() {
 	try {
-		const res = await client.fetch(`*[_type == "category"]{
-            ...,
-            "categoryImage":categoryImage.asset->url,
-            }`);
+		const res = await client.fetch(`*[_type == 'product']{
+  productName,
+  productPrice,
+  productDescription,
+  'productCategory': productCategory->{categoryName, 'categoryImage': {
+    'url': categoryImage.asset->url,
+    'alt': categoryImage.alt
+  }},
+  'variations': variations[]{type, price},
+  'productImage': {
+    'url': productImage.asset->url,
+    'attribution': productImage.attribution,
+    'alt': productImage.alt
+  },
+  
+}`);
 		return res;
 	} catch (err) {
 		return [];
