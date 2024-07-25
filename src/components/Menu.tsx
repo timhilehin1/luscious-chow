@@ -18,7 +18,6 @@ function Menu({
 	categories: ProductCategoryData[];
 	products: ProductData[];
 }) {
-	console.log(products);
 	const [currentSection, setCurrentSection] = useState<string>("#bread");
 	const [currentImage, setCurrentImage] = useState<{ url: any; alt: any }>({
 		url: demoImage,
@@ -69,8 +68,8 @@ function Menu({
 	};
 
 	return (
-		<main className="grid grid-cols-1 lg:grid-cols-2 gap-4 relative">
-			<section className="h-40 md:h-[calc(100vh-65px)] lg:sticky lg:top-[65px]">
+		<main className="grid grid-cols-1 lg:grid-cols-2 gap-2 relative">
+			<section className="h-36 lg:h-[calc(100vh-65px)] sticky top-[65px] z-40">
 				<div className="relative w-full h-full">
 					<div
 						className="absolute h-full w-full bg-gradient-to-b from-customBlack/20 via-customBlack/60
@@ -84,8 +83,8 @@ function Menu({
 						priority
 					/>
 					<div
-						className="capitalize text-white z-20 text-4xl md:text-5xl 
-					font-black flex items-end absolute h-full w-full lora-heading p-10 md:pb-14"
+						className="capitalize text-white z-20 text-4xl lg:text-5xl 
+					font-black flex items-end absolute h-full w-full lora-heading p-10 lg:pb-14"
 					>
 						{currentSection.substring(1)}
 					</div>
@@ -120,6 +119,7 @@ function Menu({
 					categories.map(
 						(category: ProductCategoryData, categoryIndex: number) => {
 							// Filter products that belong to the current category
+							// so this guy will be repated and rendered for each category
 							const filteredProducts = products.filter(
 								(product: ProductData) =>
 									product.productCategory.categoryName === category.categoryName
@@ -141,82 +141,61 @@ function Menu({
 									<div className="flex flex-col gap-4 w-full">
 										{filteredProducts.map(
 											(product: ProductData, productIndex: number) => (
-												<React.Fragment key={productIndex}>
-													{product?.variations?.length > 0 ? (
-														product.variations.map(
-															(
-																variation: variationData,
-																variationIndex: number
-															) => (
-																<article
-																	key={variationIndex}
-																	className="w-full flex flex-col md:flex-row p-5 gap-4 md:gap-0
-                          rounded hover:bg-customGray/5 cursor-pointer ease-in-out duration-100 group"
-																>
-																	<div
-																		className="h-full w-full md:w-0 min-h-[150px] md:min-h-[130px] hidden md:block
-                            group-hover:md:w-full group-hover:block ease-in-out duration-100 relative"
-																	>
-																		<Image
-																			src={product.productImage.url}
-																			className="object-cover"
-																			fill
-																			alt={product.productImage.alt}
-																		/>
-																	</div>
+												<article
+													key={productIndex}
+													className="w-full flex flex-col md:flex-row p-5 gap-4 md:gap-24 lg:gap-0 rounded hover:bg-customGray/5 cursor-pointer ease-in-out duration-100 group"
+												>
+													<div className="md:w-0 w-full h-0 group-hover:h-[200px]  relative group-hover:w-full md:max-w-[180px] group-hover:md:min-h-[130px] group-hover:md:h-auto duration-[600ms] ease-in-out max-h-[450px] shrink-0">
+														<Image
+															src={product.productImage.url}
+															className="object-cover rounded"
+															fill
+															alt={product.productImage.alt}
+														/>
+													</div>
 
-																	<div className="flex flex-col gap-4 grow md:pl-5">
-																		<header className="flex gap-2 items-center">
-																			<p className="text-xl lora-heading">
-																				{product.productName} - {variation.type}
-																			</p>
-																			<span className="border self-end border-b border-white/10 grow"></span>
-																			<p className="lora-heading">
+													<div className="flex flex-col grow lg:pl-5">
+														<header className="flex gap-2 items-center">
+															<p className="text-base lora-heading">
+																{product.productName}
+															</p>
+															{/* show if there are no variations */}
+															{!product.variations && (
+																<span className="border self-end border-b border-white/10 grow"></span>
+															)}
+															{!product.variations && (
+																<p className="lora-heading">
+																	{getNairaFormat(
+																		product.productPrice?.toString()
+																	)}
+																</p>
+															)}
+														</header>
+														{product.variations ? (
+															<div className="text-white/70 flex-col gap-1">
+																{product.variations.map(
+																	(variation: variationData) => (
+																		<div className="flex items-center gap-4 text-base">
+																			<p className="capitalize">
+																				{variation.type.toLowerCase()}
+																			</p>{" "}
+																			-{" "}
+																			<p>
 																				{getNairaFormat(
-																					variation.price.toString()
+																					variation.price?.toString()
 																				)}
 																			</p>
-																		</header>
-																		<p>{product.productDescription}</p>
-																	</div>
-																</article>
-															)
-														)
-													) : (
-														<article
-															key={productIndex}
-															className="w-full flex flex-col md:flex-row p-5 gap-4 md:gap-0
-                        rounded hover:bg-customGray/5 cursor-pointer ease-in-out duration-100 group"
-														>
-															<div
-																className="h-full w-full md:w-0 min-h-[150px] md:min-h-[130px] hidden md:block
-                          group-hover:md:w-full group-hover:block ease-in-out duration-100 relative"
-															>
-																<Image
-																	src={product.productImage.url}
-																	className="object-cover"
-																	fill
-																	alt={product.productImage.alt}
-																/>
+																		</div>
+																	)
+																)}
 															</div>
-
-															<div className="flex flex-col gap-4 grow md:pl-5">
-																<header className="flex gap-2 items-center">
-																	<p className="text-xl lora-heading">
-																		{product.productName}
-																	</p>
-																	<span className="border self-end border-b border-white/10 grow"></span>
-																	<p className="lora-heading">
-																		{getNairaFormat(
-																			product.productPrice.toString()
-																		)}
-																	</p>
-																</header>
-																<p>{product.productDescription}</p>
-															</div>
-														</article>
-													)}
-												</React.Fragment>
+														) : (
+															<p className="text-white/70">
+																{product.productDescription}
+															</p>
+														)}
+													</div>
+												</article>
 											)
 										)}
 									</div>
