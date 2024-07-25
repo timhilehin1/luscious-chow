@@ -5,18 +5,25 @@ import demoImage from "../../public/assets/images/1.jpg";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { dummyProducts } from "../../utils";
-
-//edit and make code better
+import {
+	ProductCategoryData,
+	ProductData,
+	variationData,
+} from "@/interfaces/Product.interfaces";
+import { getNairaFormat } from "../../utils";
 function Menu({
 	categories,
 	products,
 }: {
-	categories: any[];
-	products: any[];
+	categories: ProductCategoryData[];
+	products: ProductData[];
 }) {
 	console.log(products);
 	const [currentSection, setCurrentSection] = useState<string>("#bread");
-	const [currentImage, setCurrentImage] = useState<any>(demoImage);
+	const [currentImage, setCurrentImage] = useState<{ url: any; alt: any }>({
+		url: demoImage,
+		alt: "",
+	});
 	const params = useParams();
 	useEffect(() => {
 		setCurrentSection(window.location.hash);
@@ -49,11 +56,15 @@ function Menu({
 		if (closestDiv) {
 			setClosestDivId(closestDiv);
 
-			const closestProduct = dummyProducts.find(
-				(item: any) => item.category === closestDiv
+			const closestProduct = products.find(
+				(item: ProductData) =>
+					item.productCategory.categoryName.toLowerCase() === closestDiv
 			);
 			setCurrentSection(`#${closestDiv}`);
-			setCurrentImage(closestProduct?.categoryImage);
+			setCurrentImage({
+				url: closestProduct?.productCategory.categoryImage.url,
+				alt: closestProduct?.productCategory.categoryImage.alt,
+			});
 		}
 	};
 
@@ -66,10 +77,11 @@ function Menu({
 					 to-customBlack z-10"
 					/>
 					<Image
-						src={currentImage}
+						src={currentImage.url}
 						className="object-cover"
 						fill
-						alt="cake image"
+						alt={currentImage.alt}
+						priority
 					/>
 					<div
 						className="capitalize text-white z-20 text-4xl md:text-5xl 
@@ -82,67 +94,136 @@ function Menu({
 			<section className="flex flex-col gap-8 lg:px-5">
 				<nav className="mx-auto">
 					<ul className="flex items-center justify-center flex-wrap text-lg   text-white/70 gap-6">
-						{dummyProducts.map((item: any, index: number) => (
-							<li key={index}>
-								<Link
-									href={`#${item.category}`}
-									className={`py-2.5 capitalize border-b ease-in-out duration-100 hover:border-white/70
+						{categories.length > 0 ? (
+							categories.map((item: ProductCategoryData, index: number) => (
+								<li key={index}>
+									<Link
+										href={`#${item.categoryName.toLowerCase()}`}
+										className={`py-2.5 capitalize border-b ease-in-out duration-100 hover:border-white/70
 			${
-				currentSection === `#${item.category}`
+				currentSection === `#${item.categoryName}`
 					? "border-white/70 ca"
 					: "border-white/0"
 			}`}
-								>
-									{item.category}
-								</Link>
-							</li>
-						))}
+									>
+										{item.categoryName}
+									</Link>
+								</li>
+							))
+						) : (
+							<li>No category available</li>
+						)}
 					</ul>
 				</nav>
 
-				{dummyProducts.map((item: any, index: number) => (
-					<div
-						// @ts-ignore
-						ref={(el) => (divRefs.current[index] = el)}
-						className="flex flex-col mt-4 w-full"
-						id={`${item.category}`}
-						key={index}
-					>
-						<header className="text-3xl capitalize text-center lora-heading mb-3">
-							{item.category}
-						</header>
-						<div className="flex flex-col gap-4 w-full">
-							{item.items.map((prod: any, index: number) => (
-								<article
-									key={index}
-									className="w-full flex flex-col md:flex-row p-5 gap-4 md:gap-0
-								rounded hover:bg-customGray/5 cursor-pointer ease-in-out duration-100 group"
-								>
-									<div
-										className="h-full w-full md:w-0 min-h-[150px] md:min-h-[130px] hidden md:block
-					group-hover:md:w-full group-hover:block ease-in-out duration-100 relative"
-									>
-										<Image
-											src={"/assets/images/1.jpg"}
-											className="object-cover"
-											fill
-											alt="cake image"
-										/>
-									</div>
+				{categories.length > 0 &&
+					categories.map(
+						(category: ProductCategoryData, categoryIndex: number) => {
+							// Filter products that belong to the current category
+							const filteredProducts = products.filter(
+								(product: ProductData) =>
+									product.productCategory.categoryName === category.categoryName
+							);
 
-									<div className="flex flex-col gap-4 grow md:pl-5">
-										<header className="flex gap-2 items-center">
-											<p className="text-xl lora-heading">{prod.product}</p>
-											<span className="border self-end border-b border-white/10 grow"></span>
-											<p className="lora-heading">${prod.price}</p>
-										</header>
-										<p>{prod.description}</p>
+							if (filteredProducts.length === 0) return null;
+
+							return (
+								<div
+									// @ts-ignore
+									ref={(el) => (divRefs.current[categoryIndex] = el)}
+									className="flex flex-col mt-4 w-full"
+									id={`${category.categoryName.toLowerCase()}`}
+									key={categoryIndex}
+								>
+									<header className="text-3xl capitalize text-center lora-heading mb-3">
+										{category.categoryName}
+									</header>
+									<div className="flex flex-col gap-4 w-full">
+										{filteredProducts.map(
+											(product: ProductData, productIndex: number) => (
+												<React.Fragment key={productIndex}>
+													{product?.variations?.length > 0 ? (
+														product.variations.map(
+															(
+																variation: variationData,
+																variationIndex: number
+															) => (
+																<article
+																	key={variationIndex}
+																	className="w-full flex flex-col md:flex-row p-5 gap-4 md:gap-0
+                          rounded hover:bg-customGray/5 cursor-pointer ease-in-out duration-100 group"
+																>
+																	<div
+																		className="h-full w-full md:w-0 min-h-[150px] md:min-h-[130px] hidden md:block
+                            group-hover:md:w-full group-hover:block ease-in-out duration-100 relative"
+																	>
+																		<Image
+																			src={product.productImage.url}
+																			className="object-cover"
+																			fill
+																			alt={product.productImage.alt}
+																		/>
+																	</div>
+
+																	<div className="flex flex-col gap-4 grow md:pl-5">
+																		<header className="flex gap-2 items-center">
+																			<p className="text-xl lora-heading">
+																				{product.productName} - {variation.type}
+																			</p>
+																			<span className="border self-end border-b border-white/10 grow"></span>
+																			<p className="lora-heading">
+																				{getNairaFormat(
+																					variation.price.toString()
+																				)}
+																			</p>
+																		</header>
+																		<p>{product.productDescription}</p>
+																	</div>
+																</article>
+															)
+														)
+													) : (
+														<article
+															key={productIndex}
+															className="w-full flex flex-col md:flex-row p-5 gap-4 md:gap-0
+                        rounded hover:bg-customGray/5 cursor-pointer ease-in-out duration-100 group"
+														>
+															<div
+																className="h-full w-full md:w-0 min-h-[150px] md:min-h-[130px] hidden md:block
+                          group-hover:md:w-full group-hover:block ease-in-out duration-100 relative"
+															>
+																<Image
+																	src={product.productImage.url}
+																	className="object-cover"
+																	fill
+																	alt={product.productImage.alt}
+																/>
+															</div>
+
+															<div className="flex flex-col gap-4 grow md:pl-5">
+																<header className="flex gap-2 items-center">
+																	<p className="text-xl lora-heading">
+																		{product.productName}
+																	</p>
+																	<span className="border self-end border-b border-white/10 grow"></span>
+																	<p className="lora-heading">
+																		{getNairaFormat(
+																			product.productPrice.toString()
+																		)}
+																	</p>
+																</header>
+																<p>{product.productDescription}</p>
+															</div>
+														</article>
+													)}
+												</React.Fragment>
+											)
+										)}
 									</div>
-								</article>
-							))}
-						</div>
-					</div>
-				))}
+								</div>
+							);
+						}
+					)}
 			</section>
 		</main>
 	);
