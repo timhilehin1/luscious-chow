@@ -94,21 +94,24 @@ function Menu({
 				<nav className="mx-auto">
 					<ul className="flex items-center justify-center flex-wrap text-lg   text-white/70 gap-6">
 						{categories.length > 0 ? (
-							categories.map((item: ProductCategoryData, index: number) => (
-								<li key={index}>
-									<Link
-										href={`#${item.categoryName.toLowerCase()}`}
-										className={`py-2.5 capitalize border-b ease-in-out duration-100 hover:border-white/70
-			${
-				currentSection === `#${item.categoryName}`
-					? "border-white/70 ca"
-					: "border-white/0"
-			}`}
-									>
-										{item.categoryName}
-									</Link>
-								</li>
-							))
+							categories
+								.sort((a: ProductCategoryData, b: ProductCategoryData) =>
+									a.categoryName.localeCompare(b.categoryName)
+								)
+								.map((item: ProductCategoryData, index: number) => (
+									<li key={index}>
+										<Link
+											href={`#${item.categoryName.toLowerCase()}`}
+											className={`py-2.5 capitalize border-b ease-in-out duration-100 hover:border-white/70 ${
+												currentSection === `#${item.categoryName}`
+													? "border-white/70 ca"
+													: "border-white/0"
+											}`}
+										>
+											{item.categoryName}
+										</Link>
+									</li>
+								))
 						) : (
 							<li>No category available</li>
 						)}
