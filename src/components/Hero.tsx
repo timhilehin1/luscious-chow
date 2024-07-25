@@ -1,14 +1,28 @@
+'use client'
 import React from "react";
 import Container from "./Container";
 import FadeInComponent from "./Animation/FadeInComponent";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { handleWhatsappOrderClick } from "@/utils/WhatsappOrderMessage";
 
-const Hero = () => {
+
+interface HeroProps{
+	data:{
+	  businessPhone: string
+	}
+  }
+  
+
+const Hero:React.FC<HeroProps> = ({data}) => {
+	const router = useRouter()
 	return (
 		<div className="max-h-[calc(100vh-65px)] md:h-[90vh] md:max-h-none relative">
-			<img
+			<Image
 				src="/assets/images/luscious_chow_hero.jfif"
-				className="h-full w-full absolute object-cover"
+				className="h-full w-full object-cover"
 				alt=""
+				fill
 			/>
 			<div className="bg-gradient-to-r from-customBlack/90 to-white/0  relative z-20 h-full">
 				<Container className="flex items-end py-20 h-full">
@@ -30,10 +44,12 @@ const Hero = () => {
 
 						<FadeInComponent direction="bottom" delay={0.7}>
 							<div className="flex flex-wrap gap-5 tracking-wide capitalize">
-								<button className="px-5 py-3 bg-white text-black shadow-lg shadow-white/0 ease-in-out duration-150 hover:shadow-white">
+								<button className="px-5 py-3 bg-white text-black shadow-lg 
+								shadow-white/0 ease-in-out duration-150 hover:shadow-white"
+								onClick={()=>handleWhatsappOrderClick(data.businessPhone)}>
 									Order Now
 								</button>
-								<button className="border px-5 py-3 border-white hover:bg-white/10 ease-in-out duration-150">
+								<button onClick={()=>router.push('/menu')} className="border px-5 py-3 border-white hover:bg-white/10 ease-in-out duration-150">
 									See our Menu
 								</button>
 							</div>

@@ -4,9 +4,23 @@ import Container from "./Container";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
-import 'swiper/css/effect-fade';
+import "swiper/css/effect-fade";
+import { GoArrowUpRight } from "react-icons/go";
+import { handleWhatsappOrderClick } from "@/utils/WhatsappOrderMessage";
+import Image from "next/image";
 
-const OrderMeal = () => {
+interface OrderProps {
+  data: {
+    businessPhone: string;
+    businessEmail: string;
+  };
+  featured: {
+    productName: string;
+    productImageUrl: string;
+  }[];
+}
+
+const OrderMeal: React.FC<OrderProps> = ({ data, featured }) => {
   return (
     <Container>
       <h3 className="lora-heading capitalize text-2xl sm:text-4xl tracking-wider text-center">
@@ -17,15 +31,22 @@ const OrderMeal = () => {
         <section className="flex flex-col gap-6 md:py-14 w-full">
           <article>
             <h3 className="text-customGray text-sm">Whatsapp</h3>
-            <a href="" className="lora-heading text-2xl">
-              0811108992
-            </a>
+            <button
+              onClick={() => handleWhatsappOrderClick(data.businessPhone)}
+              className="lora-heading 
+            text-2xl flex gap-3 items-center"
+            >
+              {data.businessPhone} <GoArrowUpRight size={20} />
+            </button>
           </article>
 
           <article>
             <h3 className="text-customGray text-sm">Email</h3>
-            <a href="" className="lora-heading text-2xl">
-              lusciouschow.ng@gmail.com
+            <a
+              href={`mailto:${data.businessEmail}`}
+              className="lora-heading text-2xl"
+            >
+              {data.businessEmail}
             </a>
           </article>
 
@@ -38,7 +59,7 @@ const OrderMeal = () => {
           </article>
         </section>
 
-        <section className="relative md:w-[60%] h-[250px] md:h-auto">
+        <section className="relative h-[250px] md:h-auto w-[60%]">
           <div className="absolute h-full w-full  bg-gradient-to-b from-white/0 to-customBlack/90 z-10"></div>
           <Swiper
             slidesPerView={1}
@@ -52,14 +73,16 @@ const OrderMeal = () => {
             effect="fade"
             className="h-full w-full"
           >
-            <SwiperSlide className="w-full h-full relative">
-            <img src="/assets/images/1.jpg" className=' absolute h-full w-full object-cover' alt="" />
-            </SwiperSlide>
-
-            <SwiperSlide className="w-full h-full">
-            <img src="/assets/images/luscious_chow_hero.jfif" className=' absolute h-full w-full object-cover' alt="" />
-            </SwiperSlide>
-
+            {featured.map((item) => (
+              <SwiperSlide className="w-full h-full relative">
+                <Image
+                  src={item.productImageUrl}
+                  fill
+                  className="h-full w-full rounded-tr-3xl rounded-bl-2xl object-cover"
+                  alt={item.productName}
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </section>
       </div>

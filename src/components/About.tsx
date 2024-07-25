@@ -1,25 +1,27 @@
 import React from "react";
+import Image from "next/image";
 import Container from "./Container";
 
-const About = () => {
+interface AboutProps{
+  data:{
+    businessLogo: string
+    businessDesciption: string
+  }
+}
+
+const About:React.FC<AboutProps> = ({data}) => {
   return (
     <Container className="my-20">
       <h3 className="lora-heading capitalize text-2xl sm:text-4xl tracking-wider text-center">
         About Us
       </h3>
-      <section className="grid grid-cols-1 gap-5 md:gap-0 md:grid-cols-2 my-10">
-        <div className="relative h-[15rem] md:h-auto">
-          <img src="/assets/images/1.jpg" className="absolute h-full w-full object-cover " alt="" />
+      <section className="grid grid-cols-1 gap-5 md:gap-0 md:grid-cols-[40%,1fr] my-10 min-h-[15rem]">
+        <div className="relative h-[15rem] md:h-full">
+        <Image src={data.businessLogo} alt="" fill className="object-contain "/>
         </div>
-        <div className="md:p-14 flex items-center">
-          {/* <h4 className='lora-heading capitalize text-xl'>Our Kitchen</h4> */}
+        <div className="md:p-14 flex items-center">         
           <p className="tracking-wide text-customGray leading-relaxed">
-           <strong className="lora-heading capitalize text-white text-lg underline">Luscious Chow</strong> is a food brand created with the sole aim of putting
-            smiles on faces with good food. We believe that happiness can be
-            forged through good food, hence we spare no expense in delivering
-            quality homely and delicious meals to customers. We currently
-            provide cloud kitchen services and are able to send out deliveries
-            all round Lagos.
+          {data.businessDesciption}
           </p>
         </div>
       </section>
