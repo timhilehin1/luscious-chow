@@ -12,6 +12,18 @@ export async function getCategories() {
 	}
 }
 
+// export async function getAllCategory() {
+// 	try {
+// 		const res = await client.fetch(`*[_type == "category"]{
+//             ...,
+//             "categoryImage":categoryImage.asset->url,
+//             }`);
+// 		return res;
+// 	} catch (err) {
+// 		return [];
+// 	}
+// }
+
 export async function getProducts() {
 	try {
 		const res = await client.fetch(`*[_type == 'product']{

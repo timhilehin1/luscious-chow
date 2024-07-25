@@ -9,13 +9,13 @@ import { MdOutlinePhoneInTalk } from "react-icons/md";
 
 interface FooterProps {
 	data: {
-	  businessPhone: string;
-	  businessLogo: string;
-	  businessFacebook: string;
-	  businessInstagram: string;
-	  businessTwitter: string;
+		businessPhone: string;
+		businessLogo: string;
+		businessFacebook: string;
+		businessInstagram: string;
+		businessTwitter: string;
 	};
-  }
+}
 
 const Footer: React.FC<FooterProps> = ({ data }) => {
 	return (
@@ -35,7 +35,7 @@ h-auto gap-10 lg:gap-0
 				>
 					<div className="flex flex-col text-sm lg:ml-7 text-center mt-5 lg:mt-0 lg:text-start">
 						<p className="text-white/70">Mon - Sun</p>
-						<p>08:00 - 20:00</p>
+						<p>09:00 - 4:00</p>
 					</div>
 
 					<nav className="mx-auto">
@@ -58,7 +58,7 @@ h-auto gap-10 lg:gap-0
 							</li>
 							<li>
 								<Link
-									href={"/contact"}
+									href={"/#contact"}
 									className={`py-1  ease-in-out duration-100 hover:border-white`}
 								>
 									Contacts
@@ -68,17 +68,17 @@ h-auto gap-10 lg:gap-0
 					</nav>
 
 					<a
-              href={`tel:${data.businessPhone}`}
-              className="flex gap-3 items-center tracking-wider text-white"
-            >
-              <MdOutlinePhoneInTalk size={24} /> {data.businessPhone}
-            </a>
-            <button
-              className="p-2 px-4 bg-white text-black tracking-wide md:ml-7"
-              onClick={() => handleWhatsappOrderClick(data.businessPhone)}
-            >
-              Order Now
-            </button>
+						href={`tel:${data.businessPhone}`}
+						className="flex gap-3 items-center tracking-wider text-white"
+					>
+						<MdOutlinePhoneInTalk size={24} /> {data.businessPhone}
+					</a>
+					<button
+						className="p-2 px-4 bg-white text-black tracking-wide md:ml-7"
+						onClick={() => handleWhatsappOrderClick(data.businessPhone)}
+					>
+						Order Now
+					</button>
 				</section>
 			</div>
 
@@ -87,20 +87,22 @@ h-auto gap-10 lg:gap-0
 					className=" flex justify-center
        gap-4 border-customGray/40 "
 				>
-					<a href={data.businessFacebook ?? ''}>
+					<a href={data.businessFacebook ?? ""}>
 						<FiFacebook size={26} />
 					</a>
 
-					<a href={data.businessInstagram ?? ''}>
+					<a href={data.businessInstagram ?? ""}>
 						<FaInstagram size={26} />
 					</a>
 
-					<a href={data.businessTwitter ?? ''}>
+					<a href={data.businessTwitter ?? ""}>
 						<FaXTwitter size={26} />
 					</a>
 				</section>
 
-				<p className="text-customGray text-center mt-8">©all rights reserved</p>
+				<p className="text-customGray text-center mt-8">
+					©all rights reserved
+				</p>
 			</div>
 		</footer>
 	);
