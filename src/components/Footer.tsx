@@ -1,4 +1,5 @@
 "use client";
+import { handleWhatsappOrderClick } from "@/utils/WhatsappOrderMessage";
 import Link from "next/link";
 import React from "react";
 import { FaInstagram } from "react-icons/fa";
@@ -6,7 +7,17 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook } from "react-icons/fi";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
 
-const Footer = () => {
+interface FooterProps {
+	data: {
+	  businessPhone: string;
+	  businessLogo: string;
+	  businessFacebook: string;
+	  businessInstagram: string;
+	  businessTwitter: string;
+	};
+  }
+
+const Footer: React.FC<FooterProps> = ({ data }) => {
 	return (
 		<footer className="py-14   px-5 border-t border-customGray/40 mt-10">
 			<div className="flex flex-col lg:flex-row items-center h-full">
@@ -57,14 +68,17 @@ h-auto gap-10 lg:gap-0
 					</nav>
 
 					<a
-						href="tel:+"
-						className="flex gap-3 items-center tracking-wider text-white"
-					>
-						<MdOutlinePhoneInTalk size={24} /> 08111108992
-					</a>
-					<button className="p-2 px-4 bg-white text-black tracking-wide lg:ml-7">
-						Order Now
-					</button>
+              href={`tel:${data.businessPhone}`}
+              className="flex gap-3 items-center tracking-wider text-white"
+            >
+              <MdOutlinePhoneInTalk size={24} /> {data.businessPhone}
+            </a>
+            <button
+              className="p-2 px-4 bg-white text-black tracking-wide md:ml-7"
+              onClick={() => handleWhatsappOrderClick(data.businessPhone)}
+            >
+              Order Now
+            </button>
 				</section>
 			</div>
 
@@ -73,15 +87,15 @@ h-auto gap-10 lg:gap-0
 					className=" flex justify-center
        gap-4 border-customGray/40 "
 				>
-					<a href="">
+					<a href={data.businessFacebook ?? ''}>
 						<FiFacebook size={26} />
 					</a>
 
-					<a href="">
+					<a href={data.businessInstagram ?? ''}>
 						<FaInstagram size={26} />
 					</a>
 
-					<a href="">
+					<a href={data.businessTwitter ?? ''}>
 						<FaXTwitter size={26} />
 					</a>
 				</section>
