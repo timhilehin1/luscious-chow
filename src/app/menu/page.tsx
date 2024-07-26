@@ -7,7 +7,7 @@ import { ProductCategoryData } from "@/interfaces/Product.interfaces";
 
 
 export async function generateMetadata(): Promise<Metadata> {
-    const categories:ProductCategoryData[] = await getCategories()
+    const categories:any[] = await getCategories()
 	let categoryNames = '';
 	if (categories.length > 1) {
 	  categoryNames = categories.slice(0, -1).map((category) => category.categoryName).join(', ') + 
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	title: `Menu | Luscious Chow`,
 	  description: `Your favourite food plug in Lagos Nigeria for all your: ${categoryNames}`,
 	  openGraph: {
-		images: categories.map((category)=>category.categoryImage),
+		images: categories.map((category)=>category.categoryImage?.url ?? ''),
 	  },
 	}
   }

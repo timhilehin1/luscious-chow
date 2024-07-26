@@ -4,7 +4,6 @@ import Image from "next/image";
 import demoImage from "../../public/assets/images/1.jpg";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { dummyProducts } from "../../utils";
 import {
 	ProductCategoryData,
 	ProductData,

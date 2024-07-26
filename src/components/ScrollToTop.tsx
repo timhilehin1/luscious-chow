@@ -32,7 +32,7 @@ function ScrollToTop() {
 
 	return (
 		<div
-			className={`w-10 h-10 rounded-[50%]    items-center border border-white cursor-pointer flex justify-center ${isVisible ? "fixed bottom-4 right-4" : "hidden"}`}
+			className={`w-10 h-10 rounded-[50%] z-[100] items-center border border-white cursor-pointer flex justify-center ${isVisible ? "fixed bottom-4 right-4" : "hidden"}`}
 		>
 			<button 
 				onClick={scrollToTop}
