@@ -1,56 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  scroll-padding-top: 7rem;
-  scroll-behavior: smooth;
-  font-family: "Lato", serif;
-  font-weight: 500;
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	scroll-padding-top: 7rem;
+	scroll-behavior: smooth;
+	font-family: "Lato", serif;
+	font-weight: 500;
+}
+html {
+	scroll-behavior: smooth;
+	font-size: 16px;
 }
 
-html{
-  scroll-behavior: smooth;
-  font-size: 16px;
+body {
+	background-color: #0e0d0d;
+	color: white;
+	overflow-x: hidden;
 }
 
-body{
-  background-color: #0e0d0d;
-  color: white;
-  overflow-x: hidden;
+.lora-heading {
+	font-family: "Lora", serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }
 
-.lora-heading{
-  font-family: "Lora", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+@media (min-width: 767px) and (max-width: 1023px) {
+	html {
+		font-size: 16px;
+	}
+	.vertical-text {
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+	}
 }
 
+@media (min-width: 1024px) {
+	html {
+		font-size: 17px;
+	}
 
-@media(min-width:767px) and (max-width:1023px){
-  html{
-    font-size: 16px;
-  }
-  .vertical-text{
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
-}
-
-@media(min-width: 1024px){
-  html{
-    font-size: 17px;
-  }
-
-  .vertical-text{
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
-  
+	.vertical-text {
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+	}
 }

@@ -140,7 +140,7 @@ export const dummyProducts = [
 	},
 
 	{
-		category: "rice",
+		categoryName: "test1",
 		categoryImage: "/assets/images/food.png",
 		items: [
 			{
@@ -167,7 +167,7 @@ export const dummyProducts = [
 		],
 	},
 	{
-		category: "beverages",
+		categoryName: "test2",
 		categoryImage:
 			"https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1557&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		items: [

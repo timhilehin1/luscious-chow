@@ -6,6 +6,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook } from "react-icons/fi";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
+import Image from "next/image";
 
 interface FooterProps {
 	data: {
@@ -20,13 +21,20 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ data }) => {
 	return (
 		<footer className="py-14   px-5 border-t border-customGray/40 mt-10">
-			<div className="flex flex-col lg:flex-row items-center h-full">
-				<Link
-					href="/"
-					className="tracking-wider lora-heading capitalize text-3xl lg:text-4xl"
-				>
-					CHOW
-				</Link>
+			<div className="flex flex-col lg:flex-row items-center h-full ">
+				<div className="flex items-center h-[65px]">
+					<Link
+						href="/"
+						className="tracking-wider lora-heading capitalize text-3xl md:text-4xl h-[90%] md:h-full w-[90px] relative"
+					>
+						<Image
+							src={data.businessLogo}
+							className="absolute w-full h-full object-contain"
+							fill
+							alt="cake image"
+						/>
+					</Link>
+				</div>
 
 				<section
 					className={`grow items-center flex flex-col lg:flex-row ease-in-out duration-200  
