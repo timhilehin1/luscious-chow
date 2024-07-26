@@ -35,7 +35,7 @@ h-auto gap-10 lg:gap-0
 				>
 					<div className="flex flex-col text-sm lg:ml-7 text-center mt-5 lg:mt-0 lg:text-start">
 						<p className="text-white/70">Mon - Sun</p>
-						<p>09:00 - 4:00</p>
+						<p>09:00 - 16:00</p>
 					</div>
 
 					<nav className="mx-auto">
@@ -74,7 +74,8 @@ h-auto gap-10 lg:gap-0
 						<MdOutlinePhoneInTalk size={24} /> {data.businessPhone}
 					</a>
 					<button
-						className="p-2 px-4 bg-white text-black tracking-wide md:ml-7"
+						className="p-2 px-4 bg-customGold  text-customBlack 
+						tracking-wide md:ml-7"
 						onClick={() => handleWhatsappOrderClick(data.businessPhone)}
 					>
 						Order Now

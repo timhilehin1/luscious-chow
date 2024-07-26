@@ -100,7 +100,7 @@ function Menu({
         </div>
       </section>
       <section className="flex flex-col gap-8 lg:px-5 pb-36">
-        <nav className="mx-auto px-3 ">
+        <nav className="mx-auto px-3 mt-3">
           <ul className="flex items-center justify-center
 		   flex-wrap text-lg text-white/70 gap-x-6 gap-y-5">
             {categories.length > 0 ? (
@@ -112,7 +112,7 @@ function Menu({
                   <li key={index}>
                     <Link
                       href={`#${item.categoryName.toLowerCase()}`}
-                      className={`py-2.5 capitalize border-b ease-in-out duration-100
+                      className={`p-2 capitalize border-b ease-in-out duration-100
 					   hover:border-white/70 ${
                         currentSection === `#${item.categoryName}`
                           ? "border-white/70"
