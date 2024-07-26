@@ -15,31 +15,7 @@ import { ProductCategoryData } from "@/interfaces/Product.interfaces";
 
 const FoodCategories = ({ data }: { data: ProductCategoryData[] }) => {
 	const [active, setActive] = useState(0);
-	const categories = [
-		{
-			name: "soup",
-			imageUrl:
-				"https://lowcarbafrica.com/wp-content/uploads/2018/06/Egusi-Soup-IG-1.jpg",
-		},
-		{
-			name: "rice",
-			imageUrl: "/assets/images/luscious_chow_hero.jfif",
-		},
-		{
-			name: "drinks",
-			imageUrl:
-				"https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1557&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-		},
-		{
-			name: "bread",
-			imageUrl: "/assets/images/1.jpg",
-		},
-		{
-			name: "cake",
-			imageUrl:
-				"https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1389&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-		},
-	];
+
 	const router = useRouter();
 	return (
 		<Container className="py-10">
@@ -51,7 +27,7 @@ const FoodCategories = ({ data }: { data: ProductCategoryData[] }) => {
 					<article
           key={index}
 						className={`relative cursor-pointer overflow-hidden ${
-							active === index ? "flex-[5]" : "flex-1"
+							active === index ? "flex-[4]" : "flex-1"
 						} ease-in-out duration-150`}
 						onMouseEnter={() => setActive(index)}
 					>

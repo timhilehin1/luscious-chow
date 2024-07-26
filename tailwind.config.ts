@@ -15,7 +15,8 @@ const config: Config = {
       },
       colors: {
         customBlack: '#0e0d0d',
-        customGray: '#c3c2c2'
+        customGray: '#c3c2c2',
+        customGold: "#fdeccf"
       }
     },
   },

@@ -51,8 +51,8 @@ const Featured:React.FC<FeaturedProps> = ({data}) => {
 			</div>
 
 			<div className="flex justify-center">
-				<button className="border px-5 py-3 border-white hover:bg-white/10 ease-in-out
-				 duration-150" onClick={()=>router.push('/menu')} >
+				<button className="border px-5 py-3 border-customGold hover:bg-customGold ease-in-out
+				 duration-150 text-customGold hover:text-customBlack" onClick={()=>router.push('/menu')} >
 					See Our Menu
 				</button>
 			</div>

@@ -33,9 +33,9 @@ const Navbar: React.FC<NavbarProps> = ({ data }) => {
 	return (
 		<header
 			className={`px-5 md:px-7 md:py-1 ${
-				isOpen ? "bg-customBlack/90 md:bg-customBlack" : "bg-customBlack"
-			}
-     bg-customBlack items-center sticky top-0 z-[100]`}
+				isOpen ? "bg-[#fdeccf]/[95] md:bg-[#fdeccf]" : "bg-[#fdeccf]"
+			} text-customBlack
+     bg-[#fdeccf] items-center sticky top-0 z-[100]`}
 		>
 			<FadeInComponent direction="top">
 				<div className="flex items-center h-[65px]">
@@ -55,21 +55,21 @@ const Navbar: React.FC<NavbarProps> = ({ data }) => {
 						className={`grow items-center absolute top-[100%] flex md:static flex-col md:flex-row ease-in-out duration-200  
 md:h-auto ${
 							isOpen ? "h-[calc(100vh-65px)]" : "h-0"
-						} gap-6 md:gap-0 overflow-hidden
- bg-customBlack/90 w-full left-0 `}
+						} gap-8 md:gap-0 overflow-hidden
+ bg-[#fdeccf]/[95] w-full left-0 `}
 					>
 						<div className="flex flex-col text-sm md:ml-7 text-center mt-5 md:mt-0 md:text-start">
-							<p className="text-white/70">Mon - Sun</p>
-							<p>09:00 - 4:00</p>
+							<p className="text-customBlack/70">Mon - Sun</p>
+							<p>09:00 - 16:00</p>
 						</div>
 
 						<nav className="mx-auto">
-							<ul className="flex gap-4 md:gap-12 flex-col md:flex-row text-center md:text-start">
+							<ul className="flex gap-8 md:gap-12 flex-col md:flex-row text-center md:text-start">
 								<li>
 									<Link
 										href={"/"}
-										className={`py-1 border-b ease-in-out duration-100 hover:border-white 
-                ${pathname === "/" && !currentSection ? "border-white" : "border-white/0"}`}
+										className={`py-1 border-b ease-in-out duration-100 hover:border-customBlack 
+                ${pathname === "/" && !currentSection ? "border-customBlack" : "border-customBlack/0"}`}
 									>
 										Home
 									</Link>
@@ -77,8 +77,8 @@ md:h-auto ${
 								<li>
 									<Link
 										href={"/menu"}
-										className={`py-1 border-b ease-in-out duration-100 hover:border-white 
-                ${pathname === "/menu" ? "border-white" : "border-white/0"}`}
+										className={`py-1 border-b ease-in-out duration-100 hover:border-customBlack 
+                ${pathname === "/menu" ? "border-customBlack" : "border-customBlack/0"}`}
 									>
 										Menu
 									</Link>
@@ -86,8 +86,8 @@ md:h-auto ${
 								<li>
 									<Link
 										href={"/#contact"}
-										className={`py-1 border-b ease-in-out duration-100 hover:border-white 
-                ${pathname === "/" && currentSection === "#contact" ? "border-white" : "border-white/0"}`}
+										className={`py-1 border-b ease-in-out duration-100 hover:border-customBlack 
+                ${pathname === "/" && currentSection === "#contact" ? "border-customBlack" : "border-customBlack/0"}`}
 									>
 										Contacts
 									</Link>
@@ -97,12 +97,12 @@ md:h-auto ${
 
 						<a
 							href={`tel:${data.businessPhone}`}
-							className="flex gap-3 items-center tracking-wider text-white"
+							className="flex gap-3 items-center tracking-wider text-customBlack"
 						>
 							<MdOutlinePhoneInTalk size={24} /> {data.businessPhone}
 						</a>
 						<button
-							className="p-2 px-4 bg-white text-black tracking-wide md:ml-7"
+							className="p-2 px-4 bg-customBlack text-white tracking-wide md:ml-7"
 							onClick={() => handleWhatsappOrderClick(data.businessPhone)}
 						>
 							Order Now
@@ -114,17 +114,17 @@ md:h-auto ${
 						onClick={toggleMenu}
 					>
 						<span
-							className={`block w-6 h-0.5 bg-white transform transition-transform duration-300 ease-in-out ${
+							className={`block w-6 h-0.5 bg-customBlack transform transition-transform duration-300 ease-in-out ${
 								isOpen ? "rotate-45 translate-y-2" : ""
 							}`}
 						></span>
 						<span
-							className={`block w-6 h-0.5 bg-white transition-opacity duration-300 ease-in-out ${
+							className={`block w-6 h-0.5 bg-customBlack transition-opacity duration-300 ease-in-out ${
 								isOpen ? "opacity-0" : ""
 							}`}
 						></span>
 						<span
-							className={`block w-6 h-0.5 bg-white transform transition-transform duration-300 ease-in-out ${
+							className={`block w-6 h-0.5 bg-customBlack transform transition-transform duration-300 ease-in-out ${
 								isOpen ? "-rotate-45 -translate-y-1" : ""
 							}`}
 						></span>

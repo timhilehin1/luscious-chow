@@ -34,9 +34,9 @@ const OrderMeal: React.FC<OrderProps> = ({ data, featured }) => {
             <button
               onClick={() => handleWhatsappOrderClick(data.businessPhone)}
               className="lora-heading 
-            text-2xl flex gap-3 items-center"
+            text-2xl flex gap-3 items-center "
             >
-              {data.businessPhone} <GoArrowUpRight size={20} />
+              {data.businessPhone} <GoArrowUpRight size={20} className="text-customGold"/>
             </button>
           </article>
 
@@ -46,7 +46,7 @@ const OrderMeal: React.FC<OrderProps> = ({ data, featured }) => {
               href={`mailto:${data.businessEmail}`}
               className="lora-heading text-2xl"
             >
-              {data.businessEmail}
+              {data.businessEmail} 
             </a>
           </article>
 
@@ -59,8 +59,10 @@ const OrderMeal: React.FC<OrderProps> = ({ data, featured }) => {
           </article>
         </section>
 
-        <section className="relative h-[250px] md:h-auto w-[60%]">
-          <div className="absolute h-full w-full  bg-gradient-to-b from-white/0 to-customBlack/90 z-10"></div>
+        <section className="relative h-[250px] md:h-auto w-full">
+          <div className="absolute h-full w-full bg-gradient-to-b from-white/0 to-customBlack/90 z-10"></div>
+         
+          <div className="absolute h-full w-full z-10">
           <Swiper
             slidesPerView={1}
             spaceBetween={0}
@@ -83,7 +85,8 @@ const OrderMeal: React.FC<OrderProps> = ({ data, featured }) => {
                 />
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> 
+          </div>
         </section>
       </div>
     </Container>

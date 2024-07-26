@@ -17,37 +17,12 @@ const inter = Lato({
 	weight: ["100", "300", "400", "700", "900"],
 });
 
-// export const metadata: Metadata = {
-// 	title: "Luscious Chow",
-// 	description: "",
-// 	icons: [
-// 		{
-// 			rel: "icon",
-// 			type: "image/png",
-// 			sizes: "32x32",
-// 			url: "/assets/images/logo.png",
-// 		},
-// 		{
-// 			rel: "icon",
-// 			type: "image/png",
-// 			sizes: "16x16",
-// 			url: "/assets/images/logo.png",
-// 		},
-// 		{
-// 			rel: "apple-touch-icon",
-// 			sizes: "180x180",
-// 			url: "apple-touch-icon.png",
-// 		},
-// 	],
-// };
+export async function generateMetadata(): Promise<Metadata> {
+    const info:any = await getBusinessInfo()
 
-export async function generateMetadata(
-	{ params, searchParams }: Props,
-	parent: ResolvingMetadata
-  ): Promise<Metadata> {
-  
 	return {
 	  title: `Luscious Chow`,
+	  description: info.businessDesciption,
 	  icons: [
 				{
 					rel: "icon",
@@ -68,7 +43,7 @@ export async function generateMetadata(
 				},
 			],
 	  openGraph: {
-		images: [`/assets/images/logo.png'}`],
+		images: [`${info.businessLogo}`],
 	  },
 	}
   }

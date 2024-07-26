@@ -44,12 +44,14 @@ const Hero:React.FC<HeroProps> = ({data}) => {
 
 						<FadeInComponent direction="bottom" delay={0.7}>
 							<div className="flex flex-wrap gap-5 tracking-wide capitalize">
-								<button className="px-5 py-3 bg-white text-black shadow-lg 
-								shadow-white/0 ease-in-out duration-150 hover:shadow-white"
+								<button className="px-5 py-3 bg-customGold text-black shadow-lg 
+								shadow-white/0 ease-in-out duration-150 hover:shadow-customGold"
 								onClick={()=>handleWhatsappOrderClick(data.businessPhone)}>
 									Order Now
 								</button>
-								<button onClick={()=>router.push('/menu')} className="border px-5 py-3 border-white hover:bg-white/10 ease-in-out duration-150">
+								<button onClick={()=>router.push('/menu')} className="border px-5 py-3
+								 border-customGold hover:bg-customGold ease-in-out hover:text-customBlack
+								  duration-150 text-customGold">
 									See our Menu
 								</button>
 							</div>
