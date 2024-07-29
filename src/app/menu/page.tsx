@@ -1,10 +1,9 @@
 import React from "react";
 import Menu from "@/components/Menu";
-export const dynamic = "force-dynamic";
 import { getCategories, getProducts } from "../../../sanity/sanity.query";
 import { Metadata } from "next";
-import { ProductCategoryData } from "@/interfaces/Product.interfaces";
-
+export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
     const categories:any[] = await getCategories()

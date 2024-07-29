@@ -11,7 +11,7 @@ import {
 } from "../../sanity/sanity.query";
 import { ProductCategoryData } from "@/interfaces/Product.interfaces";
 export const dynamic = "force-dynamic";
-export const revalidate = 3; // revalidate at most every hour
+export const revalidate = 60; // revalidate at most every hour
 
 export default async function Home() {
 	const categoryData: any = await getCategories();
