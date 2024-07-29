@@ -47,6 +47,10 @@ body {
 	html {
 		font-size: 16px;
 	}
+	* {
+		scroll-padding-top: 7rem;
+
+	}
 	.vertical-text {
 		writing-mode: vertical-rl;
 		text-orientation: mixed;
@@ -54,6 +58,11 @@ body {
 }
 
 @media (min-width: 1024px) {
+
+	* {
+		scroll-padding-top: 5rem;
+
+	}
 	html {
 		font-size: 17px;
 	}
