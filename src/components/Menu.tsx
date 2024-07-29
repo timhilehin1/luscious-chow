@@ -75,7 +75,6 @@ function Menu({
     if (ref) {
       const rect = ref.getBoundingClientRect();
       const distance = adjustDistance(Math.abs(rect.top));
-	  console.log(distance < closestDistance)
 
       if (distance < closestDistance) {
         closestDistance = distance;
